@@ -1,0 +1,765 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>I'm So Sorry Sana ❤️🥺</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body{
+    min-height:100vh;
+    font-family:'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background:linear-gradient(135deg, #ffd6e8 0%, #e8dcff 50%, #d5f2ff 100%);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow-x:hidden;
+    color:#2d3748;
+    padding:16px;
+}
+
+/* Card container */
+.card{
+    width:100%;
+    max-width:440px;
+    background:rgba(255,255,255,0.95);
+    backdrop-filter:blur(10px);
+    padding:30px 22px;
+    border-radius:32px;
+    text-align:center;
+    box-shadow:0 20px 50px rgba(255, 79, 135, 0.22), 0 6px 16px rgba(0,0,0,0.06);
+    position:relative;
+    z-index:10;
+    border:2px solid rgba(255,255,255,0.85);
+    transition:all 0.3s ease;
+}
+
+h1{
+    color:#ff3b77;
+    font-size:30px;
+    margin-bottom:14px;
+    font-weight:800;
+}
+
+h2{
+    color:#7c3aed;
+    font-size:24px;
+    margin-bottom:12px;
+    font-weight:700;
+}
+
+p{
+    font-size:16px;
+    line-height:1.68;
+    margin:12px 0;
+    color:#4a5568;
+}
+
+.highlight{
+    color:#ff2a6d;
+    font-weight:bold;
+}
+
+/* Interactive Buttons */
+button{
+    border:0;
+    padding:14px 28px;
+    border-radius:35px;
+    background:linear-gradient(135deg, #ff4d80, #ff758c);
+    color:white;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    margin-top:16px;
+    box-shadow:0 8px 22px rgba(255, 77, 128, 0.38);
+    transition:transform 0.15s ease, box-shadow 0.2s ease;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 26px rgba(255, 77, 128, 0.45);
+}
+
+button:active{
+    transform:scale(0.95);
+}
+
+.btn-purple{
+    background:linear-gradient(135deg, #8b5cf6, #a855f7);
+    box-shadow:0 8px 22px rgba(139, 92, 246, 0.38);
+}
+
+.btn-green{
+    background:linear-gradient(135deg, #10b981, #059669);
+    box-shadow:0 8px 22px rgba(16, 185, 129, 0.38);
+}
+
+.hidden{
+    display:none !important;
+}
+
+.emoji-hero{
+    font-size:54px;
+    margin-bottom:10px;
+    animation:gentleWobble 2.6s infinite ease-in-out;
+    filter:drop-shadow(0 6px 10px rgba(0,0,0,0.08));
+}
+
+@keyframes gentleWobble{
+    0%, 100%{transform:translateY(0) rotate(0deg);}
+    25%{transform:translateY(-6px) rotate(-4deg);}
+    75%{transform:translateY(-3px) rotate(4deg);}
+}
+
+/* ================= BALLOON BURST GAME ================= */
+.balloon-box{
+    position:relative;
+    width:100%;
+    height:220px;
+    margin:15px 0 10px;
+    background:linear-gradient(180deg, #fff2f6, #f4edff);
+    border-radius:24px;
+    overflow:hidden;
+    border:2px dashed #fca5a5;
+    box-shadow:inset 0 4px 10px rgba(0,0,0,0.03);
+}
+
+.balloon-badge{
+    display:inline-block;
+    padding:5px 14px;
+    border-radius:20px;
+    background:#ffe4e6;
+    color:#e11d48;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:8px;
+    letter-spacing:0.3px;
+}
+
+.balloon{
+    position:absolute;
+    width:56px;
+    height:68px;
+    border-radius:50% 50% 50% 50% / 40% 40% 60% 60%;
+    cursor:pointer;
+    box-shadow:inset -6px -6px 14px rgba(0,0,0,0.15), 0 8px 16px rgba(0,0,0,0.1);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    user-select:none;
+    animation:balloonFloat 3s ease-in-out infinite alternate;
+}
+
+.balloon::after{
+    content:"";
+    position:absolute;
+    bottom:-6px;
+    left:50%;
+    transform:translateX(-50%);
+    width:0;
+    height:0;
+    border-left:5px solid transparent;
+    border-right:5px solid transparent;
+    border-bottom:7px solid currentColor;
+}
+
+.balloon::before{
+    content:"";
+    position:absolute;
+    bottom:-22px;
+    left:50%;
+    transform:translateX(-50%);
+    width:1.5px;
+    height:16px;
+    background:rgba(90,90,90,0.45);
+}
+
+.balloon span{
+    font-size:11px;
+    font-weight:800;
+    color:white;
+    text-shadow:0 1px 2px rgba(0,0,0,0.3);
+    pointer-events:none;
+    transform:translateY(-3px);
+}
+
+@keyframes balloonFloat{
+    0%{ transform:translateY(0px); }
+    100%{ transform:translateY(-10px); }
+}
+
+.particle{
+    position:absolute;
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    pointer-events:none;
+    animation:explode 0.45s ease-out forwards;
+}
+
+@keyframes explode{
+    0%{ transform:translate(0, 0) scale(1); opacity:1; }
+    100%{ transform:translate(var(--tx), var(--ty)) scale(0); opacity:0; }
+}
+
+/* ================= DIL TODNA / DIL JODNA ================= */
+.heart-stage{
+    position:relative;
+    width:170px;
+    height:150px;
+    margin:25px auto 15px;
+    cursor:pointer;
+    user-select:none;
+}
+
+.heart-half{
+    width:56px;
+    height:90px;
+    background:#ff2e63;
+    border-radius:50px 50px 0 0;
+    position:absolute;
+    top:20px;
+    transition:all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow:0 8px 24px rgba(255, 46, 99, 0.35);
+}
+
+.heart-left{
+    left:35px;
+    transform:rotate(-45deg);
+    transform-origin:bottom right;
+}
+
+.heart-right{
+    right:35px;
+    transform:rotate(45deg);
+    transform-origin:bottom left;
+}
+
+/* Heart Broken State */
+.heart-stage.broken .heart-left{
+    transform:rotate(-68deg) translate(-25px, 14px);
+    background:#be123c;
+    opacity:0.88;
+}
+
+.heart-stage.broken .heart-right{
+    transform:rotate(68deg) translate(25px, 14px);
+    background:#be123c;
+    opacity:0.88;
+}
+
+.crack-symbol{
+    position:absolute;
+    top:40%;
+    left:50%;
+    transform:translate(-50%, -50%) scale(0);
+    font-size:36px;
+    z-index:5;
+    transition:transform 0.3s ease;
+    filter:drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.heart-stage.broken .crack-symbol{
+    transform:translate(-50%, -50%) scale(1);
+}
+
+/* Heart Healed / Bandage State */
+.heart-stage.fixed .heart-left{
+    transform:rotate(-45deg) translate(0, 0);
+    background:#ff3366;
+}
+
+.heart-stage.fixed .heart-right{
+    transform:rotate(45deg) translate(0, 0);
+    background:#ff3366;
+}
+
+.bandage{
+    position:absolute;
+    width:70px;
+    height:24px;
+    background:#ffe4b5;
+    border:2px dashed #b45309;
+    border-radius:6px;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%) rotate(-25deg) scale(0);
+    z-index:6;
+    transition:transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow:0 4px 10px rgba(0,0,0,0.18);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:11px;
+    color:#78350f;
+    font-weight:bold;
+}
+
+.heart-stage.fixed .bandage{
+    transform:translate(-50%, -50%) rotate(-25deg) scale(1);
+}
+
+/* ================= FLOATING PARTICLES & CONFETTI ================= */
+.floating-item{
+    position:fixed;
+    bottom:-40px;
+    font-size:26px;
+    animation:floatUp 5s linear forwards;
+    z-index:2;
+    pointer-events:none;
+}
+
+@keyframes floatUp{
+    0%{ transform:translateY(0) rotate(0deg); opacity:0; }
+    15%{ opacity:0.9; }
+    100%{ transform:translateY(-115vh) rotate(360deg); opacity:0; }
+}
+
+.confetti-piece{
+    position:fixed;
+    width:9px;
+    height:14px;
+    top:-20px;
+    z-index:40;
+    pointer-events:none;
+    animation:confettiFall 3.2s linear forwards;
+}
+
+@keyframes confettiFall{
+    0%{ transform:translateY(0) rotate(0deg); }
+    100%{ transform:translateY(110vh) rotate(720deg); }
+}
+
+.big-text{
+    font-size:28px;
+    font-weight:900;
+    color:#e11d48;
+    line-height:1.25;
+    margin-bottom:8px;
+}
+
+.offer-card{
+    background:#fff5f7;
+    border-radius:18px;
+    padding:12px 14px;
+    margin:14px 0;
+    border:1px solid #ffd1dc;
+    text-align:left;
+    font-size:14px;
+}
+
+.offer-card li{
+    margin-left:20px;
+    margin-top:4px;
+    color:#4a5568;
+}
+
+.footer-text{
+    font-size:13px;
+    color:#8c9aa8;
+    margin-top:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <!-- STEP 1: START / TEASE -->
+    <div id="step1">
+        <div class="emoji-hero">🥺👉👈</div>
+        <h1>Oye Sana...</h1>
+        <p>Aapse ek bohot zaroori baat karni thi... 😔</p>
+        <p>
+            Mujhe lagta hai aap sach mein bohot naraz ho mujhse. 
+            Isliye aapse hath jod kar ek chhota sa humble request hai...
+        </p>
+        <button onclick="nextStep(2)">
+            Hainn Jii? 🤨
+        </button>
+    </div>
+
+    <!-- STEP 2: FUNNY HAINN JI TEASE -->
+    <div id="step2" class="hidden">
+        <div class="emoji-hero">🤦‍♂️😂</div>
+        <h2>Expected Response Detected!</h2>
+        <p>Mujhe 1000% pehle se pata tha!</p>
+        <p>
+            Chahe khushi ho, dukh ho ya 7th cloud wala gussa...<br>
+            Aapka legendary response <b class="highlight">“Hainn Jii?”</b> hi hone wala tha! 😭😂
+        </p>
+        <p>
+            Itne gusse mein bhi aapka yeh dialogue change nahi hota. 
+            Lekin please 2 minute ke liye shanti rakho aur suno toh sahi!
+        </p>
+        <button onclick="nextStep(3)">
+            Achha bolo kya hai? 😒
+        </button>
+    </div>
+
+    <!-- STEP 3: SWEET & REAL APOLOGY -->
+    <div id="step3" class="hidden">
+        <div class="emoji-hero">💔🥺</div>
+        <h2>Ek Baat Sach Dil Se...</h2>
+        <p>
+            Sana, meri kisi bhi baat se ya meri bewakoofi se agar aapko bura laga ho, 
+            toh I am truly, deeply sorry.
+        </p>
+        <p>
+            Aap jab baat nahi karti ya mood off karti ho na, 
+            toh sach mein bilkul accha nahi lagta... Sab kuch ekdum soona lagta hai.
+        </p>
+        <p>
+            Lekin main janta hoon aapka gussa abhi shant nahi hua hoga, 
+            toh chalo pehle aapka gussa khatam karte hain!
+        </p>
+        <button onclick="initBalloonGame()">
+            Gussa nikaalo yahan 🎈💥
+        </button>
+    </div>
+
+    <!-- STEP 4: INTERACTIVE BALLOON POPPING (ANGER VENT) -->
+    <div id="step4" class="hidden">
+        <div class="balloon-badge" id="balloonCount">Balloons Bache Hain: 5</div>
+        <h2>Saare Balloons Fod Do! 🎈💥</h2>
+        <p style="font-size:14px; margin-top:2px;">
+            In balloons mein aapki saari narazgi bhari hai. Tap karke sab fod daalo:
+        </p>
+
+        <div class="balloon-box" id="balloonBox">
+            <!-- Dynamic Balloons inserted by JS -->
+        </div>
+
+        <p id="balloonInstruction" style="font-size:14px; color:#9333ea; font-weight:600;">
+            👆 Balloons par click karke unhe phodiye!
+        </p>
+
+        <button id="postBalloonsBtn" class="hidden btn-purple" onclick="nextStep(5)">
+            Gussa kam hua? Ab aage chalo 🥺
+        </button>
+    </div>
+
+    <!-- STEP 5: DIL TODNA & DIL JODNA -->
+    <div id="step5" class="hidden">
+        <div class="emoji-hero" id="heartEmoji">💔</div>
+        <h2 id="heartTitle">Mera Dil Tod Dijiye! 🔨</h2>
+        <p id="heartDesc">
+            Agar abhi bhi hisaab barabar nahi hua, toh yahan click karke mera dil tod do aur badla le lo...
+        </p>
+
+        <div class="heart-stage" id="heartStage" onclick="handleHeartAction()">
+            <div class="heart-half heart-left"></div>
+            <div class="heart-half heart-right"></div>
+            <div class="crack-symbol">⚡</div>
+            <div class="bandage">SORRY ❤️</div>
+        </div>
+
+        <p id="heartActionPrompt" style="font-size:14px; color:#ff2e63; font-weight:bold;">
+            👆 Dil par tap kijiye!
+        </p>
+
+        <button id="heartNextBtn" class="hidden" onclick="showFinalScreen()">
+            Ab smile kijiye na ❤️🥺
+        </button>
+    </div>
+
+    <!-- STEP 6: FINAL MOOD-CHEERING APOLOGY -->
+    <div id="finalStep" class="hidden">
+        <div class="emoji-hero">🍫🍨🥰</div>
+        <div class="big-text">
+            I'M SO SORRY<br>SANA! ❤️
+        </div>
+
+        <p>
+            Plzzz ab maan bhi jao na! 🥺 Aise naraz reh kar aap cute nahi, 
+            khatarnak lagti ho! 😂
+        </p>
+
+        <div class="offer-card">
+            <b>Peace Treaty & Rishwat Pack: 🤝</b>
+            <ul>
+                <li>🍫 Aapki favorite chocolates</li>
+                <li>🍨 Jab bolo tab ice-cream treat</li>
+                <li>🤐 Aapke har <b>"Hainn Jii"</b> par bina argue kiye "Yes Ma'am" bolna</li>
+                <li>✨ Aage se galti na karne ka pakka promise</li>
+            </ul>
+        </div>
+
+        <p>
+            Aap bohot pyari ho aur aapki smile ke bina meri duniya thodi boring ho jaati hai. 🥹
+        </p>
+
+        <button class="btn-green" id="maafBtn" onclick="grantForgiveness()">
+            Chalo Maaf Kiya! 💖🥳
+        </button>
+
+        <p class="footer-text">
+            — Aapko manane ke liye dil se banaya gaya webpage ❤️
+        </p>
+    </div>
+
+</div>
+
+<script>
+let remainingBalloons = 5;
+let heartInteractionState = 0; // 0 = Intact, 1 = Broken, 2 = Fixed
+
+function hideAll(){
+    document.getElementById("step1").classList.add("hidden");
+    document.getElementById("step2").classList.add("hidden");
+    document.getElementById("step3").classList.add("hidden");
+    document.getElementById("step4").classList.add("hidden");
+    document.getElementById("step5").classList.add("hidden");
+    document.getElementById("finalStep").classList.add("hidden");
+}
+
+function nextStep(stepIndex){
+    hideAll();
+    if(stepIndex === 2) document.getElementById("step2").classList.remove("hidden");
+    if(stepIndex === 3) document.getElementById("step3").classList.remove("hidden");
+    if(stepIndex === 5) document.getElementById("step5").classList.remove("hidden");
+}
+
+/* ================= SOUND SYNTHESIZER ================= */
+function playAudioTone(type){
+    try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+
+        if(type === 'pop'){
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(750, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(120, ctx.currentTime + 0.08);
+            gain.gain.setValueAtTime(0.4, ctx.currentTime);
+            gain.gain.linearRampToValueAtTime(0.01, ctx.currentTime + 0.08);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start();
+            osc.stop(ctx.currentTime + 0.08);
+        } else if(type === 'crack'){
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(220, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(80, ctx.currentTime + 0.15);
+            gain.gain.setValueAtTime(0.3, ctx.currentTime);
+            gain.gain.linearRampToValueAtTime(0.01, ctx.currentTime + 0.15);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start();
+            osc.stop(ctx.currentTime + 0.15);
+        } else if(type === 'heal'){
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(320, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(640, ctx.currentTime + 0.25);
+            gain.gain.setValueAtTime(0.25, ctx.currentTime);
+            gain.gain.linearRampToValueAtTime(0.01, ctx.currentTime + 0.25);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start();
+            osc.stop(ctx.currentTime + 0.25);
+        }
+    } catch (e) {
+        // Fallback for browsers with strict audio restrictions
+    }
+}
+
+/* ================= BALLOONS GAME ================= */
+const balloonData = [
+    { text: "Gussa", color: "#ff4d6d", left: "10%", top: "30px", delay: "0s" },
+    { text: "Narazgi", color: "#8b5cf6", left: "30%", top: "80px", delay: "0.4s" },
+    { text: "Katti", color: "#3b82f6", left: "50%", top: "25px", delay: "0.2s" },
+    { text: "Nakhre", color: "#f59e0b", left: "70%", top: "85px", delay: "0.6s" },
+    { text: "Uff!", color: "#10b981", left: "82%", top: "32px", delay: "0.3s" }
+];
+
+function initBalloonGame(){
+    hideAll();
+    document.getElementById("step4").classList.remove("hidden");
+    const container = document.getElementById("balloonBox");
+    container.innerHTML = "";
+    remainingBalloons = 5;
+    updateBalloonCounter();
+    document.getElementById("postBalloonsBtn").classList.add("hidden");
+    document.getElementById("balloonInstruction").innerHTML = "👆 Ek-ek karke balloons par click kijiye aur phodiye!";
+
+    balloonData.forEach((bInfo) => {
+        const balloon = document.createElement("div");
+        balloon.className = "balloon";
+        balloon.style.left = bInfo.left;
+        balloon.style.top = bInfo.top;
+        balloon.style.backgroundColor = bInfo.color;
+        balloon.style.color = bInfo.color;
+        balloon.style.animationDelay = bInfo.delay;
+        balloon.innerHTML = `<span>${bInfo.text}</span>`;
+
+        balloon.onclick = function(e){
+            burstBalloon(balloon, bInfo.color, e);
+        };
+        container.appendChild(balloon);
+    });
+}
+
+function burstBalloon(balloonElement, color){
+    if(balloonElement.dataset.popped) return;
+    balloonElement.dataset.popped = "true";
+
+    playAudioTone('pop');
+
+    const rect = balloonElement.getBoundingClientRect();
+    const boxRect = document.getElementById("balloonBox").getBoundingClientRect();
+    const centerX = rect.left - boxRect.left + (rect.width / 2);
+    const centerY = rect.top - boxRect.top + (rect.height / 2);
+
+    spawnBurstParticles(centerX, centerY, color);
+
+    balloonElement.style.transform = "scale(1.35)";
+    balloonElement.style.opacity = "0";
+
+    setTimeout(() => {
+        balloonElement.remove();
+        remainingBalloons--;
+        updateBalloonCounter();
+
+        if(remainingBalloons === 0){
+            document.getElementById("balloonInstruction").innerHTML = "💥 Wah! Saara gussa officially burst ho gaya!";
+            document.getElementById("postBalloonsBtn").classList.remove("hidden");
+            spawnHearts(12);
+        }
+    }, 160);
+}
+
+function updateBalloonCounter(){
+    document.getElementById("balloonCount").innerText = `Balloons Bache Hain: ${remainingBalloons}`;
+}
+
+function spawnBurstParticles(x, y, color){
+    const container = document.getElementById("balloonBox");
+    for(let i=0; i<14; i++){
+        const p = document.createElement("div");
+        p.className = "particle";
+        p.style.backgroundColor = color;
+        p.style.left = x + "px";
+        p.style.top = y + "px";
+
+        const angle = Math.random() * Math.PI * 2;
+        const dist = 30 + Math.random() * 50;
+        p.style.setProperty('--tx', `${Math.cos(angle) * dist}px`);
+        p.style.setProperty('--ty', `${Math.sin(angle) * dist}px`);
+
+        container.appendChild(p);
+        setTimeout(() => p.remove(), 450);
+    }
+}
+
+/* ================= HEART BREAK & MEND LOGIC ================= */
+function handleHeartAction(){
+    const stage = document.getElementById("heartStage");
+    const title = document.getElementById("heartTitle");
+    const desc = document.getElementById("heartDesc");
+    const prompt = document.getElementById("heartActionPrompt");
+    const nextBtn = document.getElementById("heartNextBtn");
+    const emoji = document.getElementById("heartEmoji");
+
+    if(heartInteractionState === 0){
+        // Break the heart
+        heartInteractionState = 1;
+        playAudioTone('crack');
+        stage.classList.add("broken");
+        emoji.innerText = "💔😭";
+        title.innerText = "Aise dil todogi kya mera? 🥺";
+        desc.innerText = "Ouch! Sach mein dil tod diya... Lekin dekho, humara bond itna kamzor thodi hai! Ek baar aur tap karo ise jodne ke liye!";
+        prompt.innerHTML = "✨ Tap karke wapas dil jod do please! 🩹";
+    } else if(heartInteractionState === 1){
+        // Mend the heart
+        heartInteractionState = 2;
+        playAudioTone('heal');
+        stage.classList.remove("broken");
+        stage.classList.add("fixed");
+        emoji.innerText = "❤️🩹🥰";
+        title.innerText = "Dil Jud Gaya! 🥹✨";
+        desc.innerText = "Yay! Sana ne bandage laga diya. Iska matlab ab narazgi 99% door ho chuki hai!";
+        prompt.innerHTML = "🥰 Aww, aapka dil sach mein bohot saaf hai!";
+        nextBtn.classList.remove("hidden");
+        spawnHearts(15);
+    }
+}
+
+/* ================= FINAL SCREEN ================= */
+function showFinalScreen(){
+    hideAll();
+    document.getElementById("finalStep").classList.remove("hidden");
+    spawnConfetti();
+    spawnHearts(25);
+}
+
+function grantForgiveness(){
+    playAudioTone('heal');
+    spawnConfetti();
+    spawnHearts(40);
+    const btn = document.getElementById("maafBtn");
+    btn.innerHTML = "Yayyy! Best Friends Forever! 🥳💖✨";
+    btn.style.background = "linear-gradient(135deg, #10b981, #047857)";
+    btn.disabled = true;
+}
+
+/* ================= AMBIENT EFFECTS ================= */
+function spawnHearts(count = 20){
+    const symbols = ["❤️", "💖", "💕", "🥺", "🌸", "✨", "🍫"];
+    for(let i=0; i<count; i++){
+        const item = document.createElement("div");
+        item.className = "floating-item";
+        item.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+        item.style.left = (Math.random() * 92) + "vw";
+        item.style.animationDuration = (3.5 + Math.random() * 3.5) + "s";
+        item.style.animationDelay = (Math.random() * 1.5) + "s";
+        item.style.fontSize = (18 + Math.random() * 18) + "px";
+
+        document.body.appendChild(item);
+        setTimeout(() => item.remove(), 7000);
+    }
+}
+
+function spawnConfetti(){
+    const colors = ["#ff3b77", "#8b5cf6", "#ffd166", "#06d6a0", "#4cc9f0", "#ff758c"];
+    for(let i=0; i<85; i++){
+        const c = document.createElement("div");
+        c.className = "confetti-piece";
+        c.style.left = (Math.random() * 100) + "vw";
+        c.style.animationDelay = (Math.random() * 1.4) + "s";
+        c.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        c.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 3600);
+    }
+}
+
+// Float subtle hearts on initial load
+window.onload = function(){
+    spawnHearts(8);
+};
+</script>
+
+</body>
+</html>
+```
