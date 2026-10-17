@@ -1,4 +1,3 @@
-html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -695,69 +694,64 @@ function handleHeartAction(){
         playAudioTone('heal');
         stage.classList.remove("broken");
         stage.classList.add("fixed");
-        emoji.innerText = "❤️🩹🥰";
-        title.innerText = "Dil Jud Gaya! 🥹✨";
-        desc.innerText = "Yay! Sana ne bandage laga diya. Iska matlab ab narazgi 99% door ho chuki hai!";
-        prompt.innerHTML = "🥰 Aww, aapka dil sach mein bohot saaf hai!";
+        emoji.innerText = "🩹❤️";
+        title.innerText = "Yay! Dil Jud Gaya! 🥹";
+        desc.innerText = "Dekha? Sorry aur thode pyaar se sab theek ho jata hai. Ab bas aapki pyaari si smile bachi hai!";
+        prompt.innerHTML = "💖 Dil jud chuka hai, ab aage chaliye!";
         nextBtn.classList.remove("hidden");
         spawnHearts(15);
     }
 }
 
-/* ================= FINAL SCREEN ================= */
 function showFinalScreen(){
     hideAll();
     document.getElementById("finalStep").classList.remove("hidden");
-    spawnConfetti();
-    spawnHearts(25);
+    spawnHearts(10);
 }
 
+/* ================= FINAL CELEBRATION ================= */
 function grantForgiveness(){
-    playAudioTone('heal');
-    spawnConfetti();
-    spawnHearts(40);
     const btn = document.getElementById("maafBtn");
-    btn.innerHTML = "Yayyy! Best Friends Forever! 🥳💖✨";
-    btn.style.background = "linear-gradient(135deg, #10b981, #047857)";
-    btn.disabled = true;
+    btn.innerText = "YAYYY! BEST FRIEND/PERSON EVER! 🎉❤️";
+    btn.style.pointerEvents = "none";
+    btn.style.background = "linear-gradient(135deg, #ec4899, #f43f5e)";
+    
+    // Confetti and celebration shower
+    spawnConfetti(60);
+    spawnHearts(30);
+    playAudioTone('heal');
 }
 
-/* ================= AMBIENT EFFECTS ================= */
-function spawnHearts(count = 20){
-    const symbols = ["❤️", "💖", "💕", "🥺", "🌸", "✨", "🍫"];
-    for(let i=0; i<count; i++){
-        const item = document.createElement("div");
-        item.className = "floating-item";
-        item.innerText = symbols[Math.floor(Math.random() * symbols.length)];
-        item.style.left = (Math.random() * 92) + "vw";
-        item.style.animationDuration = (3.5 + Math.random() * 3.5) + "s";
-        item.style.animationDelay = (Math.random() * 1.5) + "s";
-        item.style.fontSize = (18 + Math.random() * 18) + "px";
-
-        document.body.appendChild(item);
-        setTimeout(() => item.remove(), 7000);
+/* ================= FLOATING PARTICLES ================= */
+function spawnHearts(count){
+    const icons = ['❤️', '💖', '✨', '🌸', '🥺', '🍬'];
+    for(let i = 0; i < count; i++){
+        setTimeout(() => {
+            const el = document.createElement("div");
+            el.className = "floating-item";
+            el.innerText = icons[Math.floor(Math.random() * icons.length)];
+            el.style.left = (Math.random() * 90 + 5) + "vw";
+            el.style.animationDuration = (3.5 + Math.random() * 2.5) + "s";
+            document.body.appendChild(el);
+            setTimeout(() => el.remove(), 5500);
+        }, i * 120);
     }
 }
 
-function spawnConfetti(){
-    const colors = ["#ff3b77", "#8b5cf6", "#ffd166", "#06d6a0", "#4cc9f0", "#ff758c"];
-    for(let i=0; i<85; i++){
-        const c = document.createElement("div");
-        c.className = "confetti-piece";
-        c.style.left = (Math.random() * 100) + "vw";
-        c.style.animationDelay = (Math.random() * 1.4) + "s";
-        c.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        c.style.transform = `rotate(${Math.random() * 360}deg)`;
-
-        document.body.appendChild(c);
-        setTimeout(() => c.remove(), 3600);
+function spawnConfetti(count){
+    const colors = ['#ff4d80', '#a855f7', '#3b82f6', '#10b981', '#fbbf24', '#f43f5e'];
+    for(let i = 0; i < count; i++){
+        setTimeout(() => {
+            const conf = document.createElement("div");
+            conf.className = "confetti-piece";
+            conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            conf.style.left = Math.random() * 100 + "vw";
+            conf.style.animationDuration = (2 + Math.random() * 2) + "s";
+            document.body.appendChild(conf);
+            setTimeout(() => conf.remove(), 4000);
+        }, i * 35);
     }
 }
-
-// Float subtle hearts on initial load
-window.onload = function(){
-    spawnHearts(8);
-};
 </script>
 
 </body>
